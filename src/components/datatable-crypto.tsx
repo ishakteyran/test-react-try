@@ -67,7 +67,6 @@ const DataTableCrypto = () => {
             .then((data) => {
                 setCrypto(data);
                 setTableData(data);
-                console.log("data from API : ", data)
             })
             .catch(error=>{
                 // @ts-ignore
@@ -187,7 +186,6 @@ const DataTableCrypto = () => {
 
     /// Calculate target price
     const calculatePrice = () => {
-        console.log("CALCULATING PRICE");
         if (selectedTarget && selectedCrypto) {
             const price = priceList.find(x => x.key === selectedCrypto.base + "-" + selectedTarget.name);
             if(!price)
@@ -205,15 +203,13 @@ const DataTableCrypto = () => {
 
     /// Calculate crypto amount
     const calculateReversePrice = () => {
-        console.log("CALCULATING REVERSE PRICE");
         if (selectedTarget && selectedCrypto) {
             const price = priceList.find(x => x.key === selectedCrypto.base + "-" + selectedTarget.name);
-            console.log("price : ", price)
+
             if(!price)
                 return;
             const tAmount = targetAmount ?? 0;
             const value = tAmount / Number(price.value);
-            console.log("value : ", value);
 
             setCryptoAmount(value);
         }
@@ -233,22 +229,17 @@ const DataTableCrypto = () => {
     //Filter data shown in the table
     const filterData = () => {
         let tblData = crypto;
-        console.log("tableData : ", tblData);
-        console.log("date1 : ", dateFilterStart);
-        console.log("date2 : ", dateFilterEnd);
-        console.log("type : ", type)
         if (dateFilterStart) {
             tblData = tblData.filter(x => new Date(x.transactionDate) >= new Date(dateFilterStart.toLocaleString()));
-            console.log("tableData F1: ", tblData);
+
         }
         if (dateFilterEnd) {
             tblData = tblData.filter(x => new Date(x.transactionDate) <= new Date(dateFilterEnd.toLocaleString()));
-            console.log("tableData F2: ", tblData);
+
         }
 
         if (type)
             tblData = tblData.filter(x => x.conversionType === type.name);
-        console.log("tableData FILTERED : ", tblData);
         setTableData(tblData);
 
     }
@@ -300,7 +291,6 @@ const DataTableCrypto = () => {
 
     ///format date value to show in dataTable
     const formatDate = (value: any) => {
-        console.log("Date value in formatDate : ", value)
         const date = new Date(value);
         return date.toLocaleDateString('en-US', {
             day: '2-digit',

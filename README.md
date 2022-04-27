@@ -57,7 +57,7 @@ To run this project, you'll need to have the following installed:
 
 1. Clone the repo :
    ```sh
-   git clone https://github.com/ganeshmkharvi/react-crypto-exchange-rates.git
+   git clone https://github.com/ishakteyran/test-react-try.git
    ```
 2. Install dependencies (use `sudo` if required) :
 
